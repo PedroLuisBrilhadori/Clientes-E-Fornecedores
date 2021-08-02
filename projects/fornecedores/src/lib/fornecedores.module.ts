@@ -4,6 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 import { FornecedoresComponent } from './componentes/fornecedores.component';
@@ -13,14 +16,17 @@ import { FornecedoresComponent } from './componentes/fornecedores.component';
 
 @NgModule({
   declarations: [
-    FornecedoresComponent
+    FornecedoresComponent,
   ],
   imports: [
     SharedModule,
     BrowserModule,
     CommonModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule
     
   ],
   exports: [

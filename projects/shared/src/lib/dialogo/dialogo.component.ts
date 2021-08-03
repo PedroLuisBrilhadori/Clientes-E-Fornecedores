@@ -8,16 +8,16 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DialogoComponent {
 
-  messagem: string = 'Você deseja excluir?';
+  menssagem: string = 'Você deseja excluir?';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
     private dialogoRef: MatDialogRef<DialogoComponent>
   ) 
-  { if (data) {this.messagem = data.messagem || this.messagem}}
+  { if (data) {this.menssagem = data.menssagem || this.menssagem}}
 
   comfirmarClick(): void {
-    this.dialogoRef.close();
+    this.dialogoRef.close(true);
   }
 
 }

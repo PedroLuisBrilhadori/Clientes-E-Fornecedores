@@ -1,5 +1,5 @@
-import { Inject, Component, OnInit, Injectable } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { DialogoComponent } from 'projects/shared/src/public-api';
 import { ClientesService } from '../servicos/clientes.service';
@@ -29,7 +29,7 @@ export class ClientesComponent implements OnInit {
   chamarDialogo(cliente: Cliente): void {
 
     const dialogRef = this.dialog.open(DialogoComponent, {
-      data: {messagem: "deseja excluir o cliente: " + cliente.nome + "?"},
+      data: {menssagem: "deseja excluir o cliente: " + cliente.nome + "?"},
     })
 
     dialogRef.afterClosed().subscribe((resposta: Boolean) => {

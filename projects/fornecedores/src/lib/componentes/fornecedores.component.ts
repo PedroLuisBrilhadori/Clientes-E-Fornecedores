@@ -27,7 +27,7 @@ export class FornecedoresComponent implements OnInit {
   chamarDialogo(fornecedor: Fornecedor): void{
     const dialogoRef = this.dialogo.open(DialogoComponent,{
       data:{
-        messagem: "Você deseja deletar o fornecedor: " + fornecedor.nome + "?" 
+        menssagem: "Você deseja deletar o fornecedor: " + fornecedor.nome + "?" 
       }
     });
     dialogoRef.afterClosed().subscribe((confirmar: boolean) => {

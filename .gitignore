@@ -11,6 +11,7 @@
 /node_modules
 projects/fornecedores/node_modules
 projects/clientes/node_modules
+projects/shared/node_modules
 
 # profiling files
 chrome-profiler-events*.json

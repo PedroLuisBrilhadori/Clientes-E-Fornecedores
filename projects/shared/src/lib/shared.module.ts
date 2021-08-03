@@ -1,16 +1,23 @@
 import { NgModule } from '@angular/core';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
 import { SharedComponent } from './shared.component';
+import { DialogoComponent } from './dialogo/dialogo.component';
 
 
 
 @NgModule({
   declarations: [
-    SharedComponent
+    SharedComponent,
+    DialogoComponent
   ],
   imports: [
+    MatDialogModule,
   ],
   exports: [
-    SharedComponent
+    SharedComponent,
+    DialogoComponent
   ]
 })
 export class SharedModule { }

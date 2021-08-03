@@ -21,10 +21,12 @@
     "@angular/platform-browser-dynamic": "~12.1.0",
     "@angular/router": "~12.1.0",
     "@material/button": "^11.0.0",
+    "@material/data-table": "^12.0.0",
     "angular-in-memory-web-api": "^0.11.0",
     "clientes": "file:projects/clientes",
     "fornecedores": "file:projects/fornecedores",
     "rxjs": "~6.6.0",
+    "shared": "file:projects/shared",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },

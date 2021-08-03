@@ -1,20 +1,17 @@
 import { Inject, Component, OnInit, Injectable } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 
+import { DialogoComponent } from 'projects/shared/src/public-api';
 import { ClientesService } from '../servicos/clientes.service';
 import { Cliente } from '../modelos/clientes';
 
 
-interface DataDialog{
-  client: Cliente,
-  clientes: Cliente[]
-}
+
 @Component({
   selector: 'lib-clientes',
   templateUrl: './clientes.component.html', 
   styleUrls: ['./styles.scss']
 })
-// @Injectable()
 
 export class ClientesComponent implements OnInit {
   clientes: Cliente[] = [];
@@ -31,12 +28,14 @@ export class ClientesComponent implements OnInit {
 
   chamarDialogo(cliente: Cliente): void {
 
-    const dialogRef = this.dialog.open(DialogComponent, {
-      data: {client: cliente, clientes: this.clientes},
+    const dialogRef = this.dialog.open(DialogoComponent, {
+      data: {messagem: "deseja excluir o cliente: " + cliente.nome + "?"},
     })
 
-    dialogRef.afterClosed().subscribe(resposta => {
-      console.log(resposta);
+    dialogRef.afterClosed().subscribe((resposta: Boolean) => {
+      if(resposta){
+        this.apagarCliente(cliente);
+      }
     })
   }
   
@@ -51,25 +50,4 @@ export class ClientesComponent implements OnInit {
 }
 
 
-@Component({
-  selector: 'dialog-content-example-dialog',
-  templateUrl: 'dialog.html'
-})
-export class DialogComponent {
-  constructor (
-    public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DataDialog,
-    public clientesService: ClientesService,
-    public apaga: ClientesComponent
-) {}
-
-  apagarCliente(cliente: Cliente): void {
-    this.apaga.clientes = this.apaga.clientes.filter(h => h !== cliente);
-    this.clientesService.deleteCliente(cliente.id).subscribe();
-  }
-
-  naoQuero(): void {
-    this.dialogRef.close();
-  }
-}
 

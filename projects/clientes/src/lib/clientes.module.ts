@@ -6,17 +6,14 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { ClientesComponent } from './componentes/clientes.component';
-import { DialogComponent } from '../public-api';
-
-
 
 
 @NgModule({
   declarations: [
     ClientesComponent,
-    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +22,8 @@ import { DialogComponent } from '../public-api';
     RouterModule,
     HttpClientModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   exports: [
     ClientesComponent

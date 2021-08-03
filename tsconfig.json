@@ -25,7 +25,7 @@
       ],
       "shared": [
         "dist/shared/shared",
-        "dist/shared"
+        "dist/shared",
       ]
     },
     "target": "es2017",

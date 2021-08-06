@@ -6,7 +6,6 @@ import { ClientesService } from '../servicos/clientes.service';
 import { Cliente } from '../modelos/clientes';
 
 
-
 @Component({
   selector: 'lib-clientes',
   templateUrl: './clientes.component.html', 
@@ -27,7 +26,6 @@ export class ClientesComponent implements OnInit {
   }
 
   chamarDialogo(cliente: Cliente): void {
-
     const dialogRef = this.dialog.open(DialogoComponent, {
       data: {menssagem: "deseja excluir o cliente: " + cliente.nome + "?"},
     })

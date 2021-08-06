@@ -23,7 +23,8 @@ export class ClientesService implements SharedService{
   carregar(): Observable<Cliente[]> {
       return this.http.get<Cliente[]>(this.clientUrl)
       .pipe(
-        map(clientes => clientes.filter((e: Cliente) => e.cargo === 'Cliente')));
+        map(clientes => clientes.filter((e: Cliente) => e.cargo === 'Cliente'))
+      );
   }
 
   deleteCliente(id: number): Observable<Cliente> {

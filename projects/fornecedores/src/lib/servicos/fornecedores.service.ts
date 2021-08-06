@@ -30,8 +30,8 @@ export class FornecedorService implements SharedService{
   }
 
 
-  deleteFornecedor(id: Number): Observable<Fornecedor>{
-    const url = `${this.fornecedorUrl}/${id}`;
+  deleteFornecedor(fornecedor: Fornecedor): Observable<Fornecedor>{
+    const url = `${this.fornecedorUrl}/${fornecedor.id}`;
 
     return this.http.delete<Fornecedor>(url, this.httpOptions)
   }

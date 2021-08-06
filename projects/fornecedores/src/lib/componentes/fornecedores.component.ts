@@ -39,7 +39,7 @@ export class FornecedoresComponent implements OnInit {
 
   apagaFornecedor(fornecedor: Fornecedor): void{
     this.fornecedores = this.fornecedores.filter(h => h !== fornecedor)
-    this.fornecedorService.deleteFornecedor(fornecedor.id).subscribe();
+    this.fornecedorService.deleteFornecedor(fornecedor).subscribe();
   }
 
   ngOnInit(): void {

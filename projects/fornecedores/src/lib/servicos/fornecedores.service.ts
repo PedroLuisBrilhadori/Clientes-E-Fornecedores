@@ -11,7 +11,7 @@ import { SharedService } from '../../../../shared/src/public-api';
 })
 export class FornecedorService implements SharedService{
 
-  private fornecedorUrl = 'api/db';
+  fornecedorUrl = 'api/db';
 
   constructor(
     private http: HttpClient

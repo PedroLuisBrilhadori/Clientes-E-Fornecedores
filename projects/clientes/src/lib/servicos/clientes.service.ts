@@ -12,7 +12,7 @@ import { SharedService } from 'projects/shared/src/public-api';
 export class ClientesService implements SharedService{
 
   
-  private clientUrl = 'api/db';
+  public clientUrl = 'api/db';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -27,7 +27,8 @@ export class ClientesService implements SharedService{
       );
   }
 
-  deleteCliente(id: number): Observable<Cliente> {
+  deleteCliente(cliente: Cliente | number): Observable<Cliente> {
+    const id =  typeof cliente === 'number' ? cliente : cliente.id
     const url = `${this.clientUrl}/${id}`;
 
     return this.http.delete<Cliente>(url, this.httpOptions);

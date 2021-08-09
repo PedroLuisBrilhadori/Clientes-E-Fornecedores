@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 
 import { Fornecedor } from '../modelo/fornecedor';
 import { FornecedorService } from "./fornecedores.service"
+
 
 
 describe('FornecedoreService (with mock)', () => {
@@ -38,7 +38,7 @@ describe('FornecedoreService (with mock)', () => {
             ] as Fornecedor[];
         });
 
-        it('should return expected fornecedores (called once)', () => {
+        it('fornecedor deve ser igual ao expectedFornecedores', () => {
             fornecedorService.carregar().subscribe(
                 fornecedores => expect(fornecedores).toEqual(expectedFornecedores, 'should return expected fornecedores'),
                 fail
@@ -48,54 +48,25 @@ describe('FornecedoreService (with mock)', () => {
             expect(req.request.method).toEqual('GET');
 
             req.flush(expectedFornecedores);
-        });
- 
-        it('should return expected fornecedores (called one)', () => {
-            fornecedorService.carregar().subscribe(
-                fornecedores => expect(fornecedores).toEqual(expectedFornecedores, 'should return expected fornecedores'),
-                fail
-            );
-            
-            const req = httpTestingController.expectOne(fornecedorService.fornecedorUrl);
-            expect(req.request.method).toEqual('GET');
-
-            req.flush(expectedFornecedores);
-        });
-
-        it('should return expected fornecedores (called multiple times)', () => {
-            fornecedorService.carregar().subscribe();
-            fornecedorService.carregar().subscribe();
-            fornecedorService.carregar().subscribe(
-                fornecedores => expect(fornecedores).toEqual(expectedFornecedores, 'should return expected heroes'),
-                fail
-            );
-
-            const requests = httpTestingController.match(fornecedorService.fornecedorUrl);
-            expect(requests.length).toEqual(3, 'calls to carregar()');
-
-            requests[0].flush([]);
-            requests[1].flush([{id: 6, nome: 'Sebastião', endereco: 'R. Quase', cnpj: '9856568-4', fornecedorDesde: 2010, cargo: 'Fornecedor'}]);
-            requests[2].flush([expectedFornecedores]); 
         });
     });
 
-    describe('#delete', () => {
-        const makeUrl = (id: number) => `${fornecedorService.fornecedorUrl}/${id}`;
+    describe('#deletar', () => {
+        let deletado: Fornecedor = {id: 1, nome: 'Carlos', endereco: 'R. Sim', cnpj: '4587265-8', fornecedorDesde: 2018, cargo: 'Fornecedor'}
+        
+        beforeEach(() => {
+            fornecedorService = TestBed.inject(FornecedorService);
+        });
 
-        it('should delete a fornecedor and return it', () => {
-            const deletedFornecedor: Fornecedor =  {id: 1, nome: 'Carlos', endereco: 'R. Sim', cnpj: '4587265-8', fornecedorDesde: 2018, cargo: 'Fornecedor'}
-
-            fornecedorService.deleteFornecedor(deletedFornecedor).subscribe(
-                data => expect(data).toEqual(deletedFornecedor, 'should return the fornecedor'),
+        it("deve retornar o fornecedor dado", () => {
+            fornecedorService.deleteFornecedor(deletado).subscribe(
+                resultado => expect(resultado).toEqual(deletado),
                 fail
             );
-
-            const req = httpTestingController.expectOne(fornecedorService.fornecedorUrl);
+            const req = httpTestingController.expectOne(fornecedorService.fornecedorUrl + '/' + deletado.id);
             expect(req.request.method).toEqual('DELETE');
-            expect(req.request.body).toEqual(deletedFornecedor);
 
-            const expectedResponse = new HttpResponse( {status: 200, statusText: 'OK', body: deletedFornecedor} );
-            req.event(expectedResponse);
+            req.flush(deletado);
         });
     });
 });

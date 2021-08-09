@@ -46,7 +46,6 @@ describe("Cliente Service ", () => {
 
             req.flush(expectedClientes);
         });
-
     });
 
     describe("#deletar", () => {

@@ -14,9 +14,11 @@
         </thead>
         <tbody class="mdc-data-table__content">
           <tr class="mdc-data-table__row" *ngFor="let fornecedor of fornecedores">
-              <button mat-fab color="secundary" (click)="chamarDialogo(fornecedor)">
+            <td class="mdc-data-table__cell">
+              <button mat-mini-fab color="black" (click)="chamarDialogo(fornecedor)">
                 <mat-icon>delete</mat-icon>
               </button>
+            </td>
             <td class="mdc-data-table__cell">{{fornecedor.id}}</td>
             <td class="mdc-data-table__cell">{{fornecedor.cargo}}</td>
             <td class="mdc-data-table__cell">{{fornecedor.nome}}</td>

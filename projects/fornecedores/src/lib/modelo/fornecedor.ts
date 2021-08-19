@@ -1,6 +1,6 @@
 import { Pessoa } from "projects/shared/src/public-api";
 
 export interface Fornecedor extends Pessoa {
-    cnpj: string
+    cnpj: number
     fornecedorDesde: number // ano
 }
